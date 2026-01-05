@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Whitelist | STREETLIFE ROLEPLAY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="header" data-header>
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="Ir al inicio">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__text">STREETLIFE ROLEPLAY</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" data-nav-toggle>
+        <span class="nav-toggle__lines" aria-hidden="true"></span>
+      </button>
+
+      <nav class="nav" aria-label="Navegación principal" data-nav>
+        <a class="nav__link" href="index.html#caracteristicas">Características</a>
+        <a class="nav__link" href="index.html#normativa">Normativa</a>
+        <a class="nav__link" href="index.html#galeria">Galería</a>
+        <a class="nav__link" href="whitelist.html">Whitelist</a>
+        <div class="nav__cta">
+          <a class="btn btn--ghost" href="#" data-discord-link target="_blank" rel="noreferrer">Discord</a>
+          <a class="btn btn--primary" href="#" data-connect-link>Conectar</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h1 class="section__title">Solicitud de Whitelist</h1>
+          <p class="section__subtitle">.</p>
+        </div>
+
+        <section class="card" id="whitelist-intro">
+          <h2 class="card__title">Antes de empezar</h2>
+          <p class="card__text">Lee la normativa y responde con calma. El staff revisa manualmente todas las solicitudes.</p>
+          <ul class="list">
+            <li>Respuestas detalladas y coherentes.</li>
+            <li>Sin copiar y pegar.</li>
+            <li>Respeta el formato y revisa ortografía.</li>
+          </ul>
+          <div class="card__actions">
+            <button class="btn btn--primary" type="button" id="whitelist-start">Continuar</button>
+            <a class="btn btn--ghost" href="index.html">Volver</a>
+          </div>
+        </section>
+
+        <section class="card" id="whitelist-confirm" style="display:none">
+          <h2 class="card__title">Confirmación</h2>
+          <p class="card__text">Al empezar el formulario:</p>
+          <ul class="list">
+            <li>No podrás volver atrás.</li>
+          </ul>
+          <div class="card__actions">
+            <button class="btn btn--primary" type="button" id="whitelist-confirm-start">Empezar</button>
+            <button class="btn btn--ghost" type="button" id="whitelist-confirm-back">Atrás</button>
+          </div>
+        </section>
+
+        <section class="card" id="whitelist-form-card" style="display:none">
+          <div class="form">
+            <div class="form__head">
+              <h2 class="card__title">Formulario Enviado</h2>
+              <p class="card__text">Cuando tu formulario se corriga la repuesta se dara en el discord oficial de STREETLIFE.</p>
+            </div>
+
+            <form id="whitelist-form">
+              <div class="form__grid">
+              <div class="field field--long">
+                <label class="field__label" for="wl-q1">1) 1. Usuario de Discord (EJEM: Pepe#1034).</label>
+                <textarea class="input input--area" id="wl-q1" name="q1" required></textarea>
+              </div>
+
+              <div class="field field--long">
+                <label class="field__label" for="wl-q2">2)  (Edad OOC).</label>
+                <textarea class="input input--area" id="wl-q2" name="q2" required></textarea>
+              </div>
+
+              <div class="field field--long">
+                <label class="field__label" for="wl-q3">3) (Perfil de steam).</label>
+                <textarea class="input input--area" id="wl-q3" name="q3" required></textarea>
+              </div>
+
+              <div class="field field--long">
+                <label class="field__label" for="wl-q4">4) ¿Qué es el rol serio y qué comportamientos lo rompen?.</label>
+                <textarea class="input input--area" id="wl-q4" name="q4" required></textarea>
+              </div>
+
+              <div class="field field--long">
+                <label class="field__label" for="wl-q5">5) ¿Por qué es obligatorio valorar la vida del personaje en todo momento?.</label>
+                <textarea class="input input--area" id="wl-q5" name="q5" required></textarea>
+              </div>
+
+              <div class="field field--long">
+                <label class="field__label" for="wl-q6">6) ¿Qué se considera FairPlay y cuándo ocurre?.</label>
+                <textarea class="input input--area" id="wl-q6" name="q6" required></textarea>
+              </div>
+
+              <div class="field field--long">
+                <label class="field__label" for="wl-q7">7) Explica el metagaming y por qué está prohibido.</label>
+                <textarea class="input input--area" id="wl-q7" name="q7" required></textarea>
+              </div>
+
+              <div class="field field--long">
+                <label class="field__label" for="wl-q8">8) ¿Qué es powergaming? Da un ejemplo claro.</label>
+                <textarea class="input input--area" id="wl-q8" name="q8" required></textarea>
+              </div>
+
+              <div class="field field--long">
+                <label class="field__label" for="wl-q9">9) ¿Está permitido usar información de Discord o streams dentro del juego? ¿Por qué?.</label>
+                <textarea class="input input--area" id="wl-q9" name="q9" required></textarea>
+              </div>
+
+              <div class="field field--long">
+                <label class="field__label" for="wl-q10">10) ¿Qué es el rol entorno y cómo debe respetarse?.</label>
+                <textarea class="input input--area" id="wl-q10" name="q10" required></textarea>
+              </div>
+              
+              <div class="field field--long">
+                <label class="field__label" for="wl-q11">11) ¿Qué consecuencias puede tener incumplir la normativa de rol?.</label>
+                <textarea class="input input--area" id="wl-q11" name="q11" required></textarea>
+              </div>
+
+              <div class="field field--long">
+                <label class="field__label" for="wl-q12">12) ¿Cómo debes actuar si otro jugador está rompiendo el rol en una escena?.</label>
+                <textarea class="input input--area" id="wl-q12" name="q12" required></textarea>
+              </div>
+
+              <div class="field field--long">
+                <label class="field__label" for="wl-q13">13) ¿Cuándo está permitido reportar a otro jugador?</label>
+                <textarea class="input input--area" id="wl-q13" name="q13" required></textarea>
+              </div>
+
+              <div class="field field--long">
+                <label class="field__label" for="wl-q14">14) ¿Está permitido cortar un rol sin motivo válido? Explica tu respuesta.</label>
+                <textarea class="input input--area" id="wl-q14" name="q14" required></textarea>
+              </div>
+
+              <div class="field field--long">
+                <label class="field__label" for="wl-q15">15) Diferencia entre PK y CK según la normativa.</label>
+                <textarea class="input input--area" id="wl-q15" name="q15" required></textarea>
+              </div>
+
+              <div class="field field--long">
+                <label class="field__label" for="wl-q16">16) ¿Qué recuerdas después de una muerte con PK?.</label>
+                <textarea class="input input--area" id="wl-q16" name="q16" required></textarea>
+              </div>
+
+              <div class="field field--long">
+                <label class="field__label" for="wl-q17">17) ¿En qué casos se puede realizar un CK?.</label>
+                <textarea class="input input--area" id="wl-q17" name="q17" required></textarea>
+              </div>
+
+              <div class="field field--long">
+                <label class="field__label" for="wl-q18">18) ¿Está permitido buscar venganza después de morir? ¿Por qué?.</label>
+                <textarea class="input input--area" id="wl-q18" name="q18" required></textarea>
+              </div>
+
+              <div class="field field--long">
+                <label class="field__label" for="wl-q19">19) ¿Por qué es importante mantener coherencia con la historia de tu personaje?.</label>
+                <textarea class="input input--area" id="wl-q19" name="q19" required></textarea>
+              </div>
+
+              <div class="field field--long">
+                <label class="field__label" for="wl-q20">20) ¿Qué harías si una situación no te favorece pero sigue siendo válida en rol?.</label>
+                <textarea class="input input--area" id="wl-q20" name="q20" required></textarea>
+              </div>
+
+               <div class="field field--long">
+                <label class="field__label" for="wl-q21">21) ¿Cómo afecta la normativa a la toma de decisiones de tu personaje?.</label>
+                <textarea class="input input--area" id="wl-q21" name="q21" required></textarea>
+              </div>
+
+               <div class="field field--long">
+                <label class="field__label" for="wl-q22">22) ¿Qué significa priorizar el rol por encima de ganar una escena?.</label>
+                <textarea class="input input--area" id="wl-q22" name="q22" required></textarea>
+              </div>
+
+              <div class="card__actions">
+                <button class="btn btn--primary" type="submit">Enviar solicitud</button>
+                <a class="btn btn--ghost" href="index.html">Salir</a>
+              </div>
+              <p class="card__text" id="submit-result" style="margin-top:12px"></p>
+            </form>
+
+            <div id="whitelist-success" style="display:none">
+              <h2 class="card__title">Formulario enviado</h2>
+              <p class="card__text" id="whitelist-success-text"></p>
+              <div class="card__actions">
+                <a class="btn btn--primary" href="index.html">Volver al inicio</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__text">© <span data-year></span> STREETLIFE ROLEPLAY. Todos los derechos reservados.</p>
+      <div class="footer__links">
+        <a href="index.html#normativa">Normativa</a>
+        <a href="#" data-discord-link target="_blank" rel="noreferrer">Discord</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/whitelist.js" defer></script>
+</body>
+</html>

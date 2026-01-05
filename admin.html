@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Whitelist | STREETLIFE ROLEPLAY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="header" data-header>
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="Ir al inicio">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__text">STREETLIFE ROLEPLAY</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" data-nav-toggle>
+        <span class="nav-toggle__lines" aria-hidden="true"></span>
+      </button>
+
+      <nav class="nav" aria-label="Navegación principal" data-nav>
+        <a class="nav__link" href="index.html">Web</a>
+        <a class="nav__link" href="whitelist.html">Formulario</a>
+        <div class="nav__cta">
+          <button class="btn btn--ghost" type="button" id="logout-btn" style="display:none">Salir</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h1 class="section__title">Panel de revisión</h1>
+          <p class="section__subtitle">Gestión de solicitudes de whitelist.</p>
+        </div>
+
+        <div class="grid grid--2">
+          <div class="card" id="login-card">
+            <h2 class="card__title">Login</h2>
+            <form id="login-form">
+              <div class="card__actions" style="margin-top:0">
+                <input class="input" style="flex:1; min-width:220px" name="user" placeholder="Usuario" required />
+                <input class="input" style="flex:1; min-width:220px" name="pass" placeholder="Contraseña" type="password" required />
+              </div>
+              <div class="card__actions">
+                <button class="btn btn--primary" type="submit">Entrar</button>
+              </div>
+              <p class="card__text" id="login-result" style="margin-top:12px"></p>
+            </form>
+          </div>
+
+          <div class="card" id="filter-card" style="display:none">
+            <h2 class="card__title">Filtros</h2>
+            <div class="card__actions" style="margin-top:0">
+              <select class="input" id="status-filter" style="flex:1; min-width:220px">
+                <option value="">Todas</option>
+                <option value="pending">Pendiente</option>
+                <option value="approved">Aprobada</option>
+                <option value="rejected">Rechazada</option>
+              </select>
+              <button class="btn btn--primary" type="button" id="refresh-btn">Actualizar</button>
+            </div>
+            <p class="card__text" id="admin-result" style="margin-top:12px"></p>
+          </div>
+        </div>
+
+        <div class="grid grid--2" style="margin-top:14px">
+          <div class="card" id="list-card" style="display:none">
+            <h2 class="card__title">Solicitudes</h2>
+            <div class="status" id="list"></div>
+          </div>
+
+          <div class="card" id="detail-card" style="display:none">
+            <h2 class="card__title">Detalle</h2>
+            <div id="detail"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__text">© <span data-year></span> STREETLIFE ROLEPLAY. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/admin.js" defer></script>
+</body>
+</html>
