@@ -8,6 +8,7 @@ const Database = require("better-sqlite3");
 const PORT = Number(process.env.PORT || 3000);
 const ADMIN_USER = String(process.env.WHITELIST_ADMIN_USER || "admin");
 const ADMIN_PASS = String(process.env.WHITELIST_ADMIN_PASS || "admin123");
+const FIVEM_WEBHOOK_KEY = String(process.env.FIVEM_WEBHOOK_KEY || "");
 
 const app = express();
 
@@ -47,6 +48,12 @@ CREATE TABLE IF NOT EXISTS submissions (
 );
 CREATE INDEX IF NOT EXISTS idx_submissions_status ON submissions(status);
 CREATE INDEX IF NOT EXISTS idx_submissions_created_at ON submissions(created_at);
+
+CREATE TABLE IF NOT EXISTS fivem_state (
+  id INTEGER PRIMARY KEY CHECK (id = 1),
+  data_json TEXT NOT NULL,
+  updated_at TEXT NOT NULL
+);
 `);
 
 const tableInfo = db.prepare("PRAGMA table_info(submissions)").all();
@@ -63,6 +70,13 @@ function nowIso() {
 
 function randomToken(bytes = 24) {
   return crypto.randomBytes(bytes).toString("hex");
+}
+
+function requireFiveMKey(req, res, next) {
+  if (!FIVEM_WEBHOOK_KEY) return res.status(500).json({ error: "missing_fivem_webhook_key" });
+  const key = String(req.headers["x-api-key"] || "");
+  if (!key || key !== FIVEM_WEBHOOK_KEY) return res.status(401).json({ error: "unauthorized" });
+  next();
 }
 
 function requireAdmin(req, res, next) {
@@ -130,6 +144,34 @@ app.post("/api/whitelist/submit", (req, res) => {
   });
 
   return res.json({ id: result.lastInsertRowid, secret });
+});
+
+app.post("/api/fivem/players", requireFiveMKey, (req, res) => {
+  const body = req.body && typeof req.body === "object" ? req.body : {};
+  const payload = {
+    ts: body.ts || Date.now(),
+    server: body.server && typeof body.server === "object" ? body.server : null,
+    players: Array.isArray(body.players) ? body.players : [],
+  };
+
+  const updatedAt = nowIso();
+  db.prepare(
+    "INSERT INTO fivem_state (id, data_json, updated_at) VALUES (1, ?, ?) ON CONFLICT(id) DO UPDATE SET data_json = excluded.data_json, updated_at = excluded.updated_at"
+  ).run(JSON.stringify(payload), updatedAt);
+
+  return res.json({ ok: true });
+});
+
+app.get("/api/fivem/players", (req, res) => {
+  const row = db.prepare("SELECT data_json, updated_at FROM fivem_state WHERE id = 1").get();
+  if (!row) return res.json({ ts: null, server: null, players: [], updated_at: null });
+  let data = null;
+  try {
+    data = JSON.parse(String(row.data_json || "{}"));
+  } catch {
+    data = { ts: null, server: null, players: [] };
+  }
+  return res.json({ ...data, updated_at: row.updated_at });
 });
 
 app.get("/api/whitelist/status/:id", (req, res) => {
