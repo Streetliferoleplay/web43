@@ -13,8 +13,6 @@ const CONFIG = {
     "assets/img/galeria-5.jpg",
     "assets/img/galeria-6.jpg",
   ],
-  serverBaseUrl: "http://85.49.49.209:40120",
-  statusRefreshMs: 15000,
 };
 
 function setText(selector, value) {
@@ -104,56 +102,7 @@ function initConfig() {
   }
 }
 
-function initFakeStatus() {
-  const fetchJson = async (url, timeoutMs = 6000) => {
-    const controller = new AbortController();
-    const t = window.setTimeout(() => controller.abort(), timeoutMs);
-    try {
-      const res = await fetch(url, { signal: controller.signal, cache: "no-store" });
-      if (!res.ok) throw new Error(String(res.status));
-      return await res.json();
-    } finally {
-      window.clearTimeout(t);
-    }
-  };
-
-  const update = async () => {
-    const now = new Date();
-    try {
-      const base = CONFIG.serverBaseUrl.replace(/\/$/, "");
-      const [info, players] = await Promise.all([
-        fetchJson(`${base}/info.json`),
-        fetchJson(`${base}/players.json`),
-      ]);
-
-      const count = Array.isArray(players) ? players.length : 0;
-      const max = info && info.vars && info.vars.sv_maxclients ? Number(info.vars.sv_maxclients) : undefined;
-
-      setText("[data-server-status]", "Online");
-      setText("[data-server-players]", Number.isFinite(max) ? `${count} / ${max}` : String(count));
-      setText("[data-server-updated]", now.toLocaleString());
-    } catch (err) {
-      const base = CONFIG.serverBaseUrl.replace(/\/$/, "");
-      console.error("Server status fetch failed", {
-        base,
-        infoUrl: `${base}/info.json`,
-        playersUrl: `${base}/players.json`,
-        err,
-      });
-
-      const isLikelyCors = err instanceof TypeError;
-      setText("[data-server-status]", isLikelyCors ? "Bloqueado (CORS)" : "Offline");
-      setText("[data-server-players]", "—");
-      setText("[data-server-updated]", now.toLocaleString());
-    }
-  };
-
-  update();
-  window.setInterval(update, CONFIG.statusRefreshMs);
-}
-
 initNav();
 initCopy();
 initYear();
 initConfig();
-// initFakeStatus();
