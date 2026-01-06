@@ -8,7 +8,7 @@ const Database = require("better-sqlite3");
 const PORT = Number(process.env.PORT || 3000);
 const ADMIN_USER = String(process.env.WHITELIST_ADMIN_USER || "admin");
 const ADMIN_PASS = String(process.env.WHITELIST_ADMIN_PASS || "admin123");
-const FIVEM_WEBHOOK_KEY = String(process.env.FIVEM_WEBHOOK_KEY || "");
+const FIVEM_WEBHOOK_KEY = String(process.env.FIVEM_WEBHOOK_KEY || "SLRP_9f3a6c1b7e2d4a0c9d8e7f6a5b4c3d2e");
 
 const app = express();
 
@@ -273,3 +273,4 @@ app.listen(PORT, () => {
   console.log(`[whitelist] server running on http://localhost:${PORT}`);
   console.log(`[whitelist] admin user: ${ADMIN_USER}`);
 });
+
